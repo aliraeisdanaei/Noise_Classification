@@ -5,8 +5,9 @@ library(jpeg)
 pm <- read.csv("/home/aliraeis/4./MATH_3333/Final_Project/photoMetaData.csv")
 n <- nrow(pm)
 
-trainFlag <- (runif(n) > 0.5)
+trainFlag <- (runif(n) > 0.75)
 y <- as.numeric(pm$category == "outdoor-day")
+y <- as.numeric(grepl('outdoor*', pm$category))
 
 X <- matrix(NA, ncol=3, nrow=n)
 for (j in 1:n) {
